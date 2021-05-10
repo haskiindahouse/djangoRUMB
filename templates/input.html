@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img src="../templates/t1.png" class="img-fluid" width="180" height="70">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://127.0.0.1:8000/calc/"
+              >Главная <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Контакты</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Продукция
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">ГНСС-оборудование</a>
+              <a class="dropdown-item" href="#">Программное обеспечение</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action active">Калькулятор</button>
+    <form action="toLatLong" method="POST">
+        {% csrf_token %}
+        <input type="text" name="ID1"  placeholder="ID" class="form-control">
+        <div class="form-inline">
+        <input type="text" name="X"  placeholder="X" class="form-control">
+        <input type="text" name="Y"  placeholder="Y" class="form-control">
+        <input type="text" name="Z" placeholder="Z" class="form-control">
+        <button type="submit" class="btn btn-success">
+        BLH
+        </button>
+        </div>
+    </form>
+    <form action="fromLatLong" method="POST">
+        {% csrf_token %}
+            <button type="button" class="list-group-item list-group-item-action active">B</button>
+        <div class="form-inline">
+        <input type="text" name="Bgrad"  placeholder="Градусы" class="form-control" readonly >
+        <input type="text" name="Bmin"  placeholder="Минуты" class="form-control" readonly>
+        <input type="text" name="Bsec" placeholder="Секунды" class="form-control" readonly>
+        </div>
+        <div class="form-inline">
+        <input type="text" name="BGrad"  placeholder="BGrad" class="form-control">
+        <input type="text" name="BMin"  placeholder="BMin" class="form-control">
+        <input type="text" name="BSec" placeholder="BSec" class="form-control">
+        </div>
+    <button type="button" class="list-group-item list-group-item-action active">L</button>
+        <div class="form-inline">
+        <input type="text" name="Lgrad"  placeholder="Градусы" class="form-control" readonly>
+        <input type="text" name="Lgin"  placeholder="Минуты" class="form-control" readonly>
+        <input type="text" name="Lsec" placeholder="Секунды" class="form-control" readonly >
+        </div>
+        <div class="form-inline">
+        <input type="text" name="LGrad"  placeholder="LGrad" class="form-control">
+        <input type="text" name="LMin"  placeholder="LMin" class="form-control">
+        <input type="text" name="LSec" placeholder="LSec" class="form-control">
+        </div>
+        <input type="text" name="ID2"  placeholder="ID" class="form-control">
+    <button type="button" class="list-group-item list-group-item-action active">H</button>
+        <div class="form-inline">
+        <input type="text" name="H" placeholder="H" class="form-control">
+        <button type="submit" class="btn btn-success">
+        XYZ
+        </button>
+        </div>
+        </form>
+    <form action="displayAll" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">
+        Display all
+        </button>
+    </form>
+</div>
+</body>
+</html>
